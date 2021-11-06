@@ -51,7 +51,7 @@ float findMaxDeviation(Point** arrayOfPoints, int size,
             maxDeviation = d;
         }
     }
-    return (maxDeviation*1.2);
+    return (maxDeviation*1.1);
 }
 
 /**
@@ -153,7 +153,7 @@ vector<AnomalyReport> SimpleAnomalyDetector::detect(const TimeSeries& ts){
                     Point point(data[i][j], data[i][k]);//create point
                     float d = dev(point, found.lin_reg);//find deviation
                     /*add anomaly to vector if deviation is too large*/
-                    if (d > found.threshold) {
+                    if (d > found.threshold*1.1) {
                         AnomalyReport newReport(found.feature1 + "-" + found.feature2, i);
                         allReports.push_back(newReport);
                     }
